@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public static class Raindrops
 {
@@ -7,15 +8,36 @@ public static class Raindrops
     {
         var factors = GetFactors(number);
 
-        if (factors.Count == 3)
+        if (factors.Contains(3) && factors.Contains(5) && factors.Contains(7))
+        {
+            return "PlingPlangPlong";
+        }
+        else if (factors.Contains(3) && factors.Contains(5))
+        {
+            return "PlingPlang";
+        }
+        else if (factors.Contains(3) && factors.Contains(7))
+        {
+            return "PlingPlong";
+        }
+        else if (factors.Contains(5) && factors.Contains(7))
+        {
+            return "PlangPlong";
+        }
+        else if (factors.Contains(3))
         {
             return "Pling";
-        } else if (factors.Count == 5) 
+        }
+        else if (factors.Contains(5))
         {
             return "Plang";
-        } else if (factors.Count == 7) {
+        }
+        else if (factors.Contains(7))
+        {
             return "Plong";
-        } else {
+        }
+        else
+        {
             return number.ToString();
         }
     }
@@ -23,14 +45,15 @@ public static class Raindrops
     public static List<int> GetFactors(int number)
     {
         List<int> factors = new List<int>();
-        int max = (int)Math.Sqrt(number);  //round down
+        int max = (int)Math.Sqrt(number);
         for (int factor = 1; factor <= max; ++factor)
-        { //test from 1 to the square root, or the int below it, inclusive.
+        {
             if (number % factor == 0)
             {
                 factors.Add(factor);
+
                 if (factor != number / factor)
-                { // Don't add the square root twice!  Thanks Jon
+                {
                     factors.Add(number / factor);
                 }
             }
