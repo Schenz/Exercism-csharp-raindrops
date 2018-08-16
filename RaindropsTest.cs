@@ -5,16 +5,10 @@ using Xunit;
 public class RaindropsTest
 {
     [Fact]
-    public void The_sound_for_1_is_1()
-    {
-        Assert.Equal("1", Raindrops.Convert(1));
-    }
+    public void The_sound_for_1_is_1() => Assert.Equal("1", Raindrops.Convert(1));
 
-    [Fact(Skip = "Remove to run test")]
-    public void The_sound_for_3_is_pling()
-    {
-        Assert.Equal("Pling", Raindrops.Convert(3));
-    }
+    [Fact]
+    public void The_sound_for_3_is_pling() => Assert.Equal("Pling", Raindrops.Convert(3));
 
     [Fact(Skip = "Remove to run test")]
     public void The_sound_for_5_is_plang()
