@@ -6,44 +6,23 @@ public static class Raindrops
 {
     public static string Convert(int number)
     {
-        var factors = GetFactors(number);
         var phrase = "";
 
-        if (factors.Contains(3))
+        if (number % 3 == 0)
         {
             phrase += "Pling";
         }
 
-        if (factors.Contains(5))
+        if (number % 5 == 0)
         {
             phrase += "Plang";
         }
 
-        if (factors.Contains(7))
+        if (number % 7 == 0)
         {
             phrase += "Plong";
         }
 
         return String.IsNullOrWhiteSpace(phrase) ? number.ToString() : phrase;
-    }
-
-    public static List<int> GetFactors(int number)
-    {
-        List<int> factors = new List<int>();
-        int max = (int)Math.Sqrt(number);
-        for (int factor = 1; factor <= max; ++factor)
-        {
-            if (number % factor == 0)
-            {
-                factors.Add(factor);
-
-                if (factor != number / factor)
-                {
-                    factors.Add(number / factor);
-                }
-            }
-        }
-
-        return factors;
     }
 }
