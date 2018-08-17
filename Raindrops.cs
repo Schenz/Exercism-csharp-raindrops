@@ -7,39 +7,24 @@ public static class Raindrops
     public static string Convert(int number)
     {
         var factors = GetFactors(number);
+        var phrase = "";
 
-        if (factors.Contains(3) && factors.Contains(5) && factors.Contains(7))
+        if (factors.Contains(3))
         {
-            return "PlingPlangPlong";
+            phrase += "Pling";
         }
-        else if (factors.Contains(3) && factors.Contains(5))
+
+        if (factors.Contains(5))
         {
-            return "PlingPlang";
+            phrase += "Plang";
         }
-        else if (factors.Contains(3) && factors.Contains(7))
+
+        if (factors.Contains(7))
         {
-            return "PlingPlong";
+            phrase += "Plong";
         }
-        else if (factors.Contains(5) && factors.Contains(7))
-        {
-            return "PlangPlong";
-        }
-        else if (factors.Contains(3))
-        {
-            return "Pling";
-        }
-        else if (factors.Contains(5))
-        {
-            return "Plang";
-        }
-        else if (factors.Contains(7))
-        {
-            return "Plong";
-        }
-        else
-        {
-            return number.ToString();
-        }
+
+        return String.IsNullOrWhiteSpace(phrase) ? number.ToString() : phrase;
     }
 
     public static List<int> GetFactors(int number)
